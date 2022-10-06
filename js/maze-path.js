@@ -18,17 +18,31 @@ class MazePathComponent extends HTMLElement {
         this.coordY = this.getAttribute('coord-y')
         this.randomWidth = getRandomArbitrary(1,300)
         this.randomHeight = getRandomArbitrary(1,300)
-        this.shadowRoot.querySelector('style').innerText =
-        `
-        div {
-            position: absolute;
-            background: red;
-            width: ${this.randomWidth}px;
-            height: ${this.randomHeight}px;
-            top: ${this.coordY}px;
-            left: ${this.coordX}px;
+        if (this.className === 'path') {
+            this.shadowRoot.querySelector('style').innerText =
+            `
+            div {
+                position: absolute;
+                background: red;
+                width: ${this.randomWidth}px;
+                height: ${this.randomHeight}px;
+                top: ${this.coordY}px;
+                left: ${this.coordX}px;
+            }
+            `
+        } else {
+            this.shadowRoot.querySelector('style').innerText =
+            `
+            div {
+                position: absolute;
+                background: yellow;
+                width: ${this.randomWidth}px;
+                height: ${this.randomHeight}px;
+                top: ${this.coordY}px;
+                left: ${this.coordX}px;
+            }
+            `
         }
-        `
     }
 }
 
