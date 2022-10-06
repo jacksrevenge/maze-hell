@@ -3,7 +3,7 @@ mazePathTemplate.innerHTML =
 `
 <style>
 </style>
-<p>hello world</p>
+<div></div>
 `
 
 class MazePathComponent extends HTMLElement {
@@ -16,10 +16,15 @@ class MazePathComponent extends HTMLElement {
     connectedCallback() {
         this.coordX = this.getAttribute('coord-x')
         this.coordY = this.getAttribute('coord-y')
+        this.randomWidth = getRandomArbitrary(1,300)
+        this.randomHeight = getRandomArbitrary(1,300)
         this.shadowRoot.querySelector('style').innerText =
         `
-        p {
+        div {
             position: absolute;
+            background: red;
+            width: ${this.randomWidth}px;
+            height: ${this.randomHeight}px;
             top: ${this.coordY}px;
             left: ${this.coordX}px;
         }
