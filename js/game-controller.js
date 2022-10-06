@@ -1,7 +1,10 @@
-const game_area = document.querySelector('main')
+const gameArea = document.querySelector('main')
 
-// För testing, visar muskoordinater i konsolen
-game_area.addEventListener('mousemove', (e) => {
-    console.log(e.screenX)
-    console.log(e.screenY)
+gameArea.addEventListener('mousemove', (e) => {
+    const mazePath = document.createElement('maze-path')
+
+    mazePath.setAttribute('coord-x', e.pageX)
+    mazePath.setAttribute('coord-y', e.pageY)
+
+    gameArea.appendChild(mazePath)
 })
