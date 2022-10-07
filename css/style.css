@@ -10,3 +10,13 @@ main {
 maze-path {
     display: block;
 }
+
+span {
+    font-size: 50px;
+}
+
+#level {
+    position: sticky;
+    color: lightcoral;
+    left: 90%;
+}

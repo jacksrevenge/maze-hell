@@ -16,33 +16,55 @@ class MazePathComponent extends HTMLElement {
     connectedCallback() {
         this.coordX = this.getAttribute('coord-x')
         this.coordY = this.getAttribute('coord-y')
-        this.randomWidth = getRandomArbitrary(1,300)
-        this.randomHeight = getRandomArbitrary(1,300)
-        if (this.className === 'path') {
-            this.shadowRoot.querySelector('style').innerText =
-            `
-            div {
-                position: absolute;
-                background: red;
-                width: ${this.randomWidth}px;
-                height: ${this.randomHeight}px;
-                top: ${this.coordY}px;
-                left: ${this.coordX}px;
-            }
-            `
-        } else {
-            this.shadowRoot.querySelector('style').innerText =
-            `
-            div {
-                position: absolute;
-                background: yellow;
-                width: ${this.randomWidth}px;
-                height: ${this.randomHeight}px;
-                top: ${this.coordY}px;
-                left: ${this.coordX}px;
-            }
-            `
+        this.randomWidth = getRandomArbitrary(5,300)
+        this.randomHeight = getRandomArbitrary(5,300)
+        switch (this.className) {
+            case 'goal':
+                this.shadowRoot.querySelector('style').innerText =
+                `
+                div {
+                    position: absolute;
+                    background: yellow;
+                    width: ${this.randomWidth}px;
+                    height: ${this.randomHeight}px;
+                    top: ${this.coordY}px;
+                    left: ${this.coordX}px;
+                }
+                `
+                break
+            case 'start':
+                this.shadowRoot.querySelector('style').innerText =
+                `
+                div {
+                    position: absolute;
+                    background: green;
+                    z-index: 10;
+                    width: ${this.randomWidth}px;
+                    height: ${this.randomHeight}px;
+                    top: ${this.coordY}px;
+                    left: ${this.coordX}px;
+                }
+                `
+                break
+            default:
+                this.shadowRoot.querySelector('style').innerText =
+                `
+                div {
+                    position: absolute;
+                    background: red;
+                    width: ${this.randomWidth}px;
+                    height: ${this.randomHeight}px;
+                    top: ${this.coordY}px;
+                    left: ${this.coordX}px;
+                }
+                `
+                break
         }
+    }
+    
+    disconnectedCallback() {
+        this.removeEventListener('click', boundarySet)
+        this.removeEventListener('mouseover', goalDetection)
     }
 }
 
