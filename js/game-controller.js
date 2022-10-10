@@ -1,6 +1,6 @@
 const gameArea = document.querySelector('main')
 const levelText = document.querySelector('#level')
-let amountOfPaths = 2
+let amountOfPaths = 5
 
 initRound()
 
@@ -43,8 +43,6 @@ function initRound() {
     mazeGoal.setAttribute('class', 'goal')
 
     gameArea.appendChild(mazeGoal)
-
-    amountOfPaths += 1
 }
 
 function boundarySet(e) {
@@ -55,11 +53,38 @@ function boundarySet(e) {
 }
 
 function goalDetection() {
+    const step = 1
     levelText.lastChild.textContent = parseInt(levelText.lastChild.textContent) -1
-    if (levelText.lastChild.textContent == 0) {
-        levelText.innerHTML = 'Heaven! Level: <span>0</span>'
-        levelText.style.color = 'goldenrod'
-        document.querySelector('body').style.background = 'linear-gradient(45deg, gold, white)'
+    switch (levelText.lastChild.textContent) {
+        case '600':
+            amountOfPaths += step
+            document.querySelector('body').style.background = 'linear-gradient(45deg, darkred, black)'
+            break
+        case '500':
+            amountOfPaths += step
+            document.querySelector('body').style.background = 'linear-gradient(45deg, firebrick, black)'
+            break
+        case '400':
+            amountOfPaths += step
+            document.querySelector('body').style.background = 'linear-gradient(45deg, crimson, black)'
+            break
+        case '300':
+            amountOfPaths += step
+            document.querySelector('body').style.background = 'linear-gradient(45deg, tomato, black)'
+            break
+        case '200':
+                amountOfPaths += step
+                document.querySelector('body').style.background = 'linear-gradient(45deg, indianred, black)'
+                break
+        case '100':
+                    amountOfPaths += step
+                    document.querySelector('body').style.background = 'linear-gradient(45deg, salmon, black)'
+            break
+        case '87':
+            levelText.innerHTML = 'Heaven! Level: <span>0</span>'
+            levelText.style.color = 'goldenrod'
+            document.querySelector('body').style.background = 'linear-gradient(45deg, gold, white)'
+            break
     }
     initRound()
 }
