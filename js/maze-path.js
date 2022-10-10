@@ -16,8 +16,8 @@ class MazePathComponent extends HTMLElement {
     connectedCallback() {
         this.coordX = this.getAttribute('coord-x')
         this.coordY = this.getAttribute('coord-y')
-        this.randomWidth = getRandomArbitrary(5,300)
-        this.randomHeight = getRandomArbitrary(5,300)
+        this.randomWidth = getRandomArbitrary(10,200)
+        this.randomHeight = getRandomArbitrary(10,200)
         switch (this.className) {
             case 'goal':
                 this.shadowRoot.querySelector('style').innerText =
@@ -43,6 +43,7 @@ class MazePathComponent extends HTMLElement {
                     height: ${this.randomHeight}px;
                     top: ${this.coordY}px;
                     left: ${this.coordX}px;
+                    cursor: pointer;
                 }
                 `
                 break

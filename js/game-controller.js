@@ -1,5 +1,6 @@
 const gameArea = document.querySelector('main')
 const levelText = document.querySelector('#level')
+let amountOfPaths = 2
 
 initRound()
 
@@ -7,7 +8,6 @@ function initRound() {
     gameArea.removeEventListener('mouseover', boundarySet)
     gameArea.innerHTML = ''
 
-    const amountOfPaths = 5
     let offSetX = 0
     let offSetY = 0
 
@@ -43,6 +43,8 @@ function initRound() {
     mazeGoal.setAttribute('class', 'goal')
 
     gameArea.appendChild(mazeGoal)
+
+    amountOfPaths += 1
 }
 
 function boundarySet(e) {
